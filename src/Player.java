@@ -21,16 +21,26 @@ public class Player extends Brawler {
     } 
 
     @Override
-    public void attack(Power p, Brawler b) {
+    public void attack(Power power, Brawler b) {
         Random r = new Random();
         // Generate random number in range [0..1]
         double hit = r.nextInt(101)/100;
         
         // Attack successful !
-        if(hit < p.getAccuracy())
-            b.setHp(b.getHp()-p.getDamage());
+        if(hit < power.getAccuracy())
+            b.setHp(b.getHp()-power.getDamage());
         
         // Missed, yikes !
+    }
+    
+    public void cryForHelp(Enemy enemy){
+        Random r = new Random();
+        // Generate random hp for player
+        int newHp = r.nextInt(this.getHp());
+        this.setHp(newHp);
+        // Generate random hp for enemy
+        newHp = r.nextInt(this.getHp());
+        enemy.setHp(newHp);
     }
 
 }
