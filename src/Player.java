@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  *
- * @author Cheng
+ * @author Tatakai Masters
  */
 public class Player extends Brawler {
     private String playerName;

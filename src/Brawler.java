@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Cheng
+ * @author Tatakai Masters
  */
 public abstract class Brawler {
     protected String name;

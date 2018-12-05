@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Cheng
+ * @author Tatakai Masters
  */
 public class Power {
     
