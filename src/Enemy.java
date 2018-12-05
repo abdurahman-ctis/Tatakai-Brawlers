@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  *
- * @author Cheng
+ * @author Tatakai Masters
  */
 public class Enemy extends Brawler {
 
