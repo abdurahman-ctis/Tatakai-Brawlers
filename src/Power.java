@@ -9,5 +9,16 @@
  * @author Cheng
  */
 public class Power {
-    
+    private String name;
+    private int damage;
+    private String powerInfo;
+    private double accuracy;
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
 }
