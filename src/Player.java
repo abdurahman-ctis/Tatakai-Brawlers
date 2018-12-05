@@ -18,26 +18,19 @@ public class Player extends Brawler {
     public Player(String playerName, String name, int hp, String img, ArrayList<Power> powerList) {
         super(name, hp, img, powerList);
         this.playerName = playerName;
-    }
+    } 
 
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-    
     @Override
-    public void attack(Power power, Enemy enemy){
+    public void attack(Power p, Brawler b) {
         Random r = new Random();
         // Generate random number in range [0..1]
         double hit = r.nextInt(101)/100;
         
         // Attack successful !
-        if(hit < power.getAccuracy())
-            enemy.setHp(enemy.getHp()-power.getDamage());
+        if(hit < p.getAccuracy())
+            b.setHp(b.getHp()-p.getDamage());
         
         // Missed, yikes !
-    }   
+    }
+
 }
