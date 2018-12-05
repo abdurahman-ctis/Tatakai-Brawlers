@@ -24,7 +24,7 @@ public abstract class Brawler {
         this.powerList = powerList;
     }
     
-    public abstract void attack(Power p);
+    public abstract void attack(Power p, Brawler b);
     
     @Override
     public String toString() {
