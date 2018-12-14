@@ -16,12 +16,18 @@ public abstract class Brawler {
     protected int hp;
     protected String img;
     protected ArrayList<Power> powerList = new ArrayList();
+    public static int brawlerCount = 0;
 
     public Brawler(String name, int hp, String img, ArrayList<Power> powerList) {
         this.name = name;
         this.hp = hp;
         this.img = img;
         this.powerList = powerList;
+        brawlerCount++;
+    }
+
+    public static int getBrawlerCount() {
+        return brawlerCount;
     }
 
     public String getName() {
