@@ -23,6 +23,10 @@ public abstract class Brawler {
         this.img = img;
         this.powerList = powerList;
     }
+
+    public String getName() {
+        return name;
+    }
     
     public int getHp() {
         return hp;

@@ -9,5 +9,5 @@
  * @author Tatakai Masters
  */
 public interface NoisyInterface {
-    
+    public void makeSomeNoise();
 }
