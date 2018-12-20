@@ -1,4 +1,5 @@
 
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -54,7 +55,7 @@ public class CreateBrawler extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         brawlerNameTf = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -215,18 +216,16 @@ public class CreateBrawler extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                                .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
+                                .addGap(36, 36, 36)
+                                .addComponent(addBrawlerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(addBrawlerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(listOfBrawlerImg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(listOfBrawlerImg, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +242,7 @@ public class CreateBrawler extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addGap(48, 48, 48)
                         .addComponent(addBrawlerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))))
         );
@@ -279,11 +278,11 @@ public class CreateBrawler extends javax.swing.JFrame {
         String img = listOfBrawlerImg.getSelectedItem().toString();
         
         if(img.equalsIgnoreCase("Disorted Cat")){
-            imgIconLabel.setIcon(new ImageIcon(getClass().getResource("distorted_cat.jpg")));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("distorted_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         }else if(img.equalsIgnoreCase("Evil Cat")){
-            imgIconLabel.setIcon(new ImageIcon(getClass().getResource("evil_cat.jpg")));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("evil_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         }else if(img.equalsIgnoreCase("Lenin Cat")){ 
-            imgIconLabel.setIcon(new ImageIcon(getClass().getResource("lenin_cat.jpg")));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("lenin_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         }else{
             imgIconLabel.setIcon(new ImageIcon(getClass().getResource("")));
         };
