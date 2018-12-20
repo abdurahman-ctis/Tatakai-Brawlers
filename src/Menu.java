@@ -25,7 +25,7 @@ import sun.audio.ContinuousAudioDataStream;
 public class Menu extends javax.swing.JFrame {
 
     Choose chooseFrame = new Choose();
-    CreateBrawler createBrawlerFrame = new CreateBrawler();
+    CreateBrawler createBrawlerFrame = null;
 
     /**
      * Creates new form Main
@@ -221,6 +221,7 @@ public class Menu extends javax.swing.JFrame {
                 initBrawlers();
             }
             errorLabel.setText("");
+            createBrawlerFrame = new CreateBrawler(nameField.getText());
             createBrawlerFrame.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
