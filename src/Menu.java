@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -18,6 +21,10 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        ArrayList<Power> politeList = new ArrayList();//for polite cat's powers
+        politeList.add(new Power("Say a compliment", 10, "Makes enemy blush, increased body temperature kills some of his cells.", 0.9));
+        politeList.add(new Power("Apologize", 12, "Causes confusion to enemy because it hasn't done anything wrong", 0.7));
+        BrawlerSys.addBrawler(new Player("", "Polite cat", 100, "polite_cat.jpg", politeList));
     }
 
     /**

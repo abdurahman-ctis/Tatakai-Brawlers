@@ -14,6 +14,13 @@ public class Power {
     private String powerInfo;
     private double accuracy;
 
+    public Power(String name, int damage, String powerInfo, double accuracy) {
+        this.name = name;
+        this.damage = damage;
+        this.powerInfo = powerInfo;
+        this.accuracy = accuracy;
+    }
+
     public double getAccuracy() {
         return accuracy;
     }
