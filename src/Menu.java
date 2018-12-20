@@ -21,10 +21,28 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        ArrayList<Power> politeList = new ArrayList();//for polite cat's powers
+        initBrawlers();
+    }
+        
+    
+    public void initBrawlers() {
+        //Polite Cat
+        ArrayList<Power> politeList = new ArrayList();
         politeList.add(new Power("Say a compliment", 10, "Makes enemy blush, increased body temperature kills some of his cells.", 0.9));
-        politeList.add(new Power("Apologize", 12, "Causes confusion to enemy because it hasn't done anything wrong", 0.7));
+        politeList.add(new Power("Apologize", -12, "Causes confusion to enemy because it hasn't done anything wrong", 0.7));
         BrawlerSys.addBrawler(new Player("", "Polite cat", 100, "polite_cat.jpg", politeList));
+        
+        //Stuck Cat
+        ArrayList<Power> stuckList = new ArrayList();
+        stuckList.add(new Power("Pile up hatred", 11, "The more you think it's funny, the angrier it gets", 0.8));
+        stuckList.add(new Power("Feel awkward", -8, "You feel so embarrassed by just looking at it.", 0.4));
+        BrawlerSys.addBrawler(new Player("", "Stuck cat", 100, "stuck_cat.jpg", stuckList));
+        
+        //Strong Cat
+        ArrayList<Power> strongList = new ArrayList();
+        strongList.add(new Power("Beat you to hell", 15, "It beats you so bad that even your mom can't recognize you.", 0.5));
+        strongList.add(new Power("Flex", -9, "Weird flex but ok.", 0.9));
+        BrawlerSys.addBrawler(new Player("", "Strong cat", 100, "strong_cat.jpg", strongList));
     }
 
     /**
