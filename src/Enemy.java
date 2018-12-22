@@ -18,6 +18,10 @@ public class Enemy extends Brawler {
         super(name, hp, img, powerList);
     }
     
+    public Enemy(Brawler b){
+        super(b.getName(), b.getHp(), b.getImg(), b.getPowerList());
+    }
+    
     @Override
     public void attack(Power power, Brawler b) {
         Random r = new Random();

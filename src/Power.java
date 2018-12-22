@@ -21,6 +21,14 @@ public class Power {
         this.accuracy = accuracy;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPowerInfo() {
+        return powerInfo;
+    }
+
     public double getAccuracy() {
         return accuracy;
     }

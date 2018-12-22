@@ -26,6 +26,14 @@ public abstract class Brawler {
         brawlerCount++;
     }
 
+    public ArrayList<Power> getPowerList() {
+        return powerList;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
     public static int getBrawlerCount() {
         return brawlerCount;
     }

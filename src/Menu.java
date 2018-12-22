@@ -24,7 +24,7 @@ import sun.audio.ContinuousAudioDataStream;
  */
 public class Menu extends javax.swing.JFrame {
 
-    Choose chooseFrame = new Choose();
+    Choose chooseFrame;
     CreateBrawler createBrawlerFrame = null;
 
     /**
@@ -57,37 +57,37 @@ public class Menu extends javax.swing.JFrame {
         ArrayList<Power> politeList = new ArrayList();
         politeList.add(new Power("Say a compliment", 10, "Makes enemy blush, increased body temperature kills some of his cells.", 0.9));
         politeList.add(new Power("Apologize", -12, "Causes confusion to enemy because it hasn't done anything wrong", 0.7));
-        BrawlerSys.addBrawler(new Player("", "Polite cat", 100, "polite_cat.jpg", politeList));
+        BrawlerSys.addBrawler(new Player("", "Polite cat", 100, "brawlers/polite_cat.png", politeList));
 
         //Stuck Cat
         ArrayList<Power> stuckList = new ArrayList();
         stuckList.add(new Power("Pile up hatred", 11, "The more you think it's funny, the angrier it gets", 0.8));
         stuckList.add(new Power("Feel awkward", -8, "You feel so embarrassed by just looking at it.", 0.4));
-        BrawlerSys.addBrawler(new Player("", "Stuck cat", 100, "stuck_cat.jpg", stuckList));
+        BrawlerSys.addBrawler(new Player("", "Stuck cat", 100, "brawlers/stuck_cat.png", stuckList));
 
         //Strong Cat
-        ArrayList<Power> strongList = new ArrayList();
-        strongList.add(new Power("Beat you to hell", 15, "It beats you so bad that even your mom can't recognize you.", 0.5));
-        strongList.add(new Power("Flex", -9, "Weird flex but ok.", 0.9));
-        BrawlerSys.addBrawler(new Player("", "Strong cat", 100, "strong_cat.jpg", strongList));
+//        ArrayList<Power> strongList = new ArrayList();
+//        strongList.add(new Power("Beat you to hell", 15, "It beats you so bad that even your mom can't recognize you.", 0.5));
+//        strongList.add(new Power("Flex", -9, "Weird flex but ok.", 0.9));
+//        BrawlerSys.addBrawler(new Player("", "Strong cat", 100, "strong_cat.jpg", strongList));
 
         //Distorted Cat
         ArrayList<Power> distortedList = new ArrayList();
         distortedList.add(new Power("Shake off your eyeballs", 13, "It is the scariest thing you've ever seen in your life.", 0.3));
         distortedList.add(new Power("Get high", -10, "Probably had too much catnip.", 0.7));
-        BrawlerSys.addBrawler(new Enemy("Distorted Cat", 100, "distorted_cat.jpg", distortedList));
+        BrawlerSys.addBrawler(new Enemy("Distorted Cat", 100, "brawlers/distorted_cat.png", distortedList));
 
         //Evil Cat
         ArrayList<Power> evilList = new ArrayList();
         evilList.add(new Power("Dark force", 15, "You get pressured from the extreme evil.", 0.2));
         evilList.add(new Power("Evil smile", 3, "It looks so evil, yet cute at the same time", 0.6));
-        BrawlerSys.addBrawler(new Enemy("Evil Cat", 100, "evil_cat.jpg", evilList));
+        BrawlerSys.addBrawler(new Enemy("Evil Cat", 100, "brawlers/evil_cat.png", evilList));
 
         //Lenin Cat
         ArrayList<Power> leninList = new ArrayList();
         leninList.add(new Power("Communism", 5, "Everything is equal.", 0.5));
         leninList.add(new Power("Sing the Soviet Anthem", 99, "Show some respect.", 0.99));
-        BrawlerSys.addBrawler(new Enemy("Lenin Cat", 100, "lenin_cat.jpg", leninList));
+        BrawlerSys.addBrawler(new Enemy("Lenin Cat", 100, "brawlers/lenin_cat.png", leninList));
 
     }
 
@@ -211,6 +211,7 @@ public class Menu extends javax.swing.JFrame {
             }
             errorLabel.setText("");
             this.setVisible(false);
+            chooseFrame = new Choose(nameField.getText());
             chooseFrame.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed

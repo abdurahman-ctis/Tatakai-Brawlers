@@ -19,6 +19,11 @@ public class Player extends Brawler {
         super(name, hp, img, powerList);
         this.playerName = playerName;
     }
+    
+    public Player(String playerName, Brawler b){
+        super(b.getName(), b.getHp(), b.getImg(), b.getPowerList());
+        this.playerName = playerName;
+    }
 
     @Override
     public void attack(Power power, Brawler b) {
