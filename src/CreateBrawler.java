@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author mmuma
@@ -17,6 +16,8 @@ public class CreateBrawler extends javax.swing.JFrame {
 
     ArrayList<Power> newBrawlerPowers = new ArrayList<Power>();
     String name;
+    boolean flag = false;
+
     /**
      * Creates new form CreateBrawler
      */
@@ -54,8 +55,10 @@ public class CreateBrawler extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         clearBtn = new javax.swing.JButton();
         addPowerBtn = new javax.swing.JButton();
+        poweraddedLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         brawlerNameTf = new javax.swing.JTextField();
+        conformation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,9 +121,11 @@ public class CreateBrawler extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(149, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(poweraddedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(addPowerBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -170,11 +175,13 @@ public class CreateBrawler extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(accuracyTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clearBtn)
-                    .addComponent(addPowerBtn))
-                .addGap(10, 10, 10))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(clearBtn)
+                        .addComponent(addPowerBtn))
+                    .addComponent(poweraddedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jLabel9.setText("Name :");
@@ -206,6 +213,8 @@ public class CreateBrawler extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        conformation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,7 +231,10 @@ public class CreateBrawler extends javax.swing.JFrame {
                                 .addComponent(addBrawlerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(conformation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
@@ -244,7 +256,9 @@ public class CreateBrawler extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imgIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(conformation, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)
                         .addComponent(addBrawlerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))))
         );
@@ -253,23 +267,44 @@ public class CreateBrawler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBrawlerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBrawlerBtnActionPerformed
-        String imgName = listOfBrawlerImg.getSelectedItem().toString();
-        String brawlerName = brawlerNameTf.getText();
-        Player b = new Player(name, brawlerName, 100, imgName, newBrawlerPowers);
-        BrawlerSys.addBrawler(b);
+        if (flag) {
+            String imgName = listOfBrawlerImg.getSelectedItem().toString();
+            String brawlerName = brawlerNameTf.getText();
+            Player b = new Player(name, brawlerName, 100, imgName, newBrawlerPowers);
+            BrawlerSys.addBrawler(b);
+            conformation.setText("Brawler Successfully Added");
+        } else{
+            conformation.setText("Select Brawler And Add Power");
+        }
     }//GEN-LAST:event_addBrawlerBtnActionPerformed
 
     private void addPowerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPowerBtnActionPerformed
-        String pname = powerNameTF.getText();
-        int damage = Integer.parseInt(DamageTF.getText());
-        String powerInfo = powerDescTxt.getText();
-        double accuracy = Double.parseDouble(accuracyTF.getText());
-        
-        Power p = new Power(pname, damage, powerInfo, accuracy);
-        newBrawlerPowers.add(p);
+        try {
+            String imgName = listOfBrawlerImg.getSelectedItem().toString();
+            String brawlerName = brawlerNameTf.getText();
+            String pname = powerNameTF.getText();
+            int damage = Integer.parseInt(DamageTF.getText());
+            String powerInfo = powerDescTxt.getText();
+            double accuracy = Double.parseDouble(accuracyTF.getText());
+
+            if (imgName.equals("None")) {
+                poweraddedLabel.setText("Select The Image");
+            } else if (accuracy <= 0 || accuracy >= 100){
+                poweraddedLabel.setText("Accuracy between 0-100");
+            }else {
+                flag = true;
+                Power p = new Power(pname, damage, powerInfo, accuracy);
+                newBrawlerPowers.add(p);
+                poweraddedLabel.setText("Power Added");
+            }
+        } catch (NumberFormatException e) {
+            poweraddedLabel.setText("Enter All Fields Correctly");
+        }
     }//GEN-LAST:event_addPowerBtnActionPerformed
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
+        listOfBrawlerImg.setSelectedIndex(0);
+        brawlerNameTf.setText("");
         powerNameTF.setText("");
         DamageTF.setText("");
         powerDescTxt.setText("");
@@ -278,19 +313,18 @@ public class CreateBrawler extends javax.swing.JFrame {
 
     private void listOfBrawlerImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listOfBrawlerImgActionPerformed
         String img = listOfBrawlerImg.getSelectedItem().toString();
-        
-        if(img.equalsIgnoreCase("Disorted Cat")){
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("distorted_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
-        }else if(img.equalsIgnoreCase("Evil Cat")){
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("evil_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
-        }else if(img.equalsIgnoreCase("Lenin Cat")){ 
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("lenin_cat.jpg")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
-        }else{
+
+        if (img.equalsIgnoreCase("Disorted Cat")) {
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("distorted_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+        } else if (img.equalsIgnoreCase("Evil Cat")) {
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("evil_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+        } else if (img.equalsIgnoreCase("Lenin Cat")) {
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("lenin_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+        } else {
             imgIconLabel.setIcon(new ImageIcon(getClass().getResource("")));
         };
-            
-    }//GEN-LAST:event_listOfBrawlerImgActionPerformed
 
+    }//GEN-LAST:event_listOfBrawlerImgActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -300,6 +334,7 @@ public class CreateBrawler extends javax.swing.JFrame {
     private javax.swing.JButton addPowerBtn;
     private javax.swing.JTextField brawlerNameTf;
     private javax.swing.JButton clearBtn;
+    private javax.swing.JLabel conformation;
     private javax.swing.JLabel imgIconLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -316,5 +351,6 @@ public class CreateBrawler extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> listOfBrawlerImg;
     private javax.swing.JTextPane powerDescTxt;
     private javax.swing.JTextField powerNameTF;
+    private javax.swing.JLabel poweraddedLabel;
     // End of variables declaration//GEN-END:variables
 }
