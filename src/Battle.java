@@ -32,6 +32,11 @@ public class Battle extends javax.swing.JFrame {
         i = new ImageIcon(getClass().getResource(e.getImg()));
         im = i.getImage().getScaledInstance(enemyPic.getWidth(), enemyPic.getHeight(), Image.SCALE_SMOOTH);
         enemyPic.setIcon(new ImageIcon(im));
+        // Background image
+        int bg = (int) (Math.random() * 2);
+        i = new ImageIcon(getClass().getResource("backgrounds/bg"+bg+".png"));
+        im = i.getImage().getScaledInstance(background.getWidth(), background.getHeight(), Image.SCALE_SMOOTH);
+        background.setIcon(new ImageIcon(im));
     }
 
     /**
