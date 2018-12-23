@@ -1,6 +1,9 @@
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /*
@@ -37,6 +40,9 @@ public class Battle extends javax.swing.JFrame {
         i = new ImageIcon(getClass().getResource("backgrounds/bg"+bg+".png"));
         im = i.getImage().getScaledInstance(background.getWidth(), background.getHeight(), Image.SCALE_SMOOTH);
         background.setIcon(new ImageIcon(im));
+        message.setText("Tatakai that brawler, "+p.getPlayerName()+" !!!");
+        playerHP.setValue(100);
+        enemyHP.setValue(100);
     }
 
     /**
@@ -56,10 +62,14 @@ public class Battle extends javax.swing.JFrame {
         atk1 = new javax.swing.JRadioButton();
         atk2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
+        cry = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
+        act = new javax.swing.JButton();
         enemyPic = new javax.swing.JLabel();
         playerPic = new javax.swing.JLabel();
+        playerHP = new javax.swing.JProgressBar();
+        enemyHP = new javax.swing.JProgressBar();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,15 +122,29 @@ public class Battle extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("     ATTACK     ", jPanel2);
 
+        buttonGroup1.add(cry);
+        cry.setText("Cry for Help");
+        cry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(cry)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(cry)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     ACTION     ", jPanel3);
@@ -128,6 +152,13 @@ public class Battle extends javax.swing.JFrame {
         text.setColumns(20);
         text.setRows(5);
         jScrollPane1.setViewportView(text);
+
+        act.setText("ACT");
+        act.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,10 +169,12 @@ public class Battle extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(act))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +182,10 @@ public class Battle extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(act)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -160,11 +195,15 @@ public class Battle extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 385, 640, 208);
         getContentPane().add(enemyPic);
-        enemyPic.setBounds(410, 90, 220, 180);
+        enemyPic.setBounds(390, 90, 240, 180);
         getContentPane().add(playerPic);
         playerPic.setBounds(10, 180, 270, 200);
+        getContentPane().add(playerHP);
+        playerHP.setBounds(70, 110, 146, 14);
+        getContentPane().add(enemyHP);
+        enemyHP.setBounds(420, 30, 146, 14);
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/bg1.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/bg0.png"))); // NOI18N
         background.setIconTextGap(0);
         getContentPane().add(background);
         background.setBounds(0, 0, 640, 400);
@@ -180,15 +219,58 @@ public class Battle extends javax.swing.JFrame {
 
     private void atk2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atk2ActionPerformed
         Power pow = p.getPowerList().get(1);
-        text.setText("Description: "+pow.getPowerInfo()+"\nDamage: "+ ((pow.getDamage())>0?pow.getDamage():"???")+"\nAccuracy: "+pow.getAccuracy());
+        text.setText("Description: "+pow.getPowerInfo()+"\nDamage: "+ pow.getDamage() +"\nAccuracy: "+pow.getAccuracy());
     }//GEN-LAST:event_atk2ActionPerformed
+
+    private void cryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryActionPerformed
+        text.setText("Let the randomness decide.");
+    }//GEN-LAST:event_cryActionPerformed
+    
+    private void result(int i){
+        String message;
+        if(i == 1){
+            message = "You won, "+p.getPlayerName()+", nice job !!!";
+        } else{
+            message = "You lost, "+p.getPlayerName()+", try again !!!";
+        }
+        Menu m = new Menu(message);
+        m.setVisible(true);
+        dispose();
+    }
+    
+    private void enemyAttack(Player p){
+        e.attack(e.getPowerList().get((int)(Math.random()*2)), p);
+    }
+    
+    private void actActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actActionPerformed
+        if(cry.isSelected()){
+            p.cryForHelp(e);
+        }
+        if(atk1.isSelected()){
+            p.attack(p.getPowerList().get(0), e);
+        }
+        if(atk2.isSelected()){
+            p.attack(p.getPowerList().get(1), e);
+        }
+        enemyHP.setValue(e.getHp());
+        
+        if(e.getHp() <= 0)
+            result(1);
+        enemyAttack(p);
+        playerHP.setValue(p.getHp());
+        if(p.getHp() <= 0)
+            result(0);
+    }//GEN-LAST:event_actActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton act;
     private javax.swing.JRadioButton atk1;
     private javax.swing.JRadioButton atk2;
     private javax.swing.JLabel background;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton cry;
+    private javax.swing.JProgressBar enemyHP;
     private javax.swing.JLabel enemyPic;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -196,6 +278,7 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel message;
+    private javax.swing.JProgressBar playerHP;
     private javax.swing.JLabel playerPic;
     private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables

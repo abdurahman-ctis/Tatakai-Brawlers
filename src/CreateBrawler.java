@@ -268,7 +268,15 @@ public class CreateBrawler extends javax.swing.JFrame {
 
     private void addBrawlerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBrawlerBtnActionPerformed
         if (flag) {
-            String imgName = listOfBrawlerImg.getSelectedItem().toString();
+            String img = listOfBrawlerImg.getSelectedItem().toString();
+            String imgName = "brawlers/distorted_cat.png";
+            if (img.equalsIgnoreCase("Disorted Cat")) {
+                imgName = "brawlers/distorted_cat.png";
+            } else if (img.equalsIgnoreCase("Evil Cat")) {
+                imgName = "brawlers/evil_cat.png";
+            } else if (img.equalsIgnoreCase("Lenin Cat")) {
+                imgName = "brawlers/lenin_cat.png";
+            }
             String brawlerName = brawlerNameTf.getText();
             Player b = new Player(name, brawlerName, 100, imgName, newBrawlerPowers);
             BrawlerSys.addBrawler(b);
@@ -315,11 +323,11 @@ public class CreateBrawler extends javax.swing.JFrame {
         String img = listOfBrawlerImg.getSelectedItem().toString();
 
         if (img.equalsIgnoreCase("Disorted Cat")) {
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("distorted_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("brawlers/distorted_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         } else if (img.equalsIgnoreCase("Evil Cat")) {
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("evil_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("brawlers/evil_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         } else if (img.equalsIgnoreCase("Lenin Cat")) {
-            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("lenin_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
+            imgIconLabel.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("brawlers/lenin_cat.png")).getImage().getScaledInstance(200, 180, Image.SCALE_SMOOTH)));
         } else {
             imgIconLabel.setIcon(new ImageIcon(getClass().getResource("")));
         };

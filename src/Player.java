@@ -25,6 +25,10 @@ public class Player extends Brawler {
         this.playerName = playerName;
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
     @Override
     public void attack(Power power, Brawler b) {
         Random r = new Random();
@@ -42,10 +46,12 @@ public class Player extends Brawler {
     public void cryForHelp(Enemy enemy) {
         Random r = new Random();
         // Generate random hp for player
-        int newHp = r.nextInt(this.getHp());
+        int newHp = r.nextInt(100);
+        System.out.println(newHp);
         this.setHp(newHp);
         // Generate random hp for enemy
         newHp = r.nextInt(this.getHp());
+        System.out.println(newHp);
         enemy.setHp(newHp);
     }
 
