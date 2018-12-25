@@ -38,6 +38,7 @@ public class Player extends Brawler {
         // Attack successful !
         if (hit < power.getAccuracy()) {
             b.setHp(b.getHp() - power.getDamage());
+            this.makeSomeNoise();
         }
 
         // Missed, yikes !
@@ -47,11 +48,9 @@ public class Player extends Brawler {
         Random r = new Random();
         // Generate random hp for player
         int newHp = r.nextInt(100);
-        System.out.println(newHp);
         this.setHp(newHp);
         // Generate random hp for enemy
         newHp = r.nextInt(this.getHp());
-        System.out.println(newHp);
         enemy.setHp(newHp);
     }
 
