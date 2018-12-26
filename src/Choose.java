@@ -50,6 +50,11 @@ public class Choose extends javax.swing.JFrame {
                 comboItemStateChanged(evt);
             }
         });
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
 
         start.setText("Start");
         start.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +118,10 @@ public class Choose extends javax.swing.JFrame {
         Battle b = new Battle(new Player(pName, player), new Enemy(BrawlerSys.displayBrawlers().get(index)));
         b.setVisible(true);
     }//GEN-LAST:event_startActionPerformed
+
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

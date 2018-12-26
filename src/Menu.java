@@ -1,4 +1,5 @@
 
+import com.sun.glass.events.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -143,6 +144,12 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel3.setText("Choose a name:");
 
+        nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameFieldKeyPressed(evt);
+            }
+        });
+
         result.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -209,9 +216,8 @@ public class Menu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    
+    private void foo(){
         if (nameField.getText().equals("")) {
             errorLabel.setText("Please provide a name!");
         } else {
@@ -223,6 +229,11 @@ public class Menu extends javax.swing.JFrame {
             chooseFrame = new Choose(nameField.getText());
             chooseFrame.setVisible(true);
         }
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        foo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -238,6 +249,13 @@ public class Menu extends javax.swing.JFrame {
             createBrawlerFrame.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            foo();
+        }
+    }//GEN-LAST:event_nameFieldKeyPressed
 
     /**
      * @param args the command line arguments

@@ -62,7 +62,7 @@ public class Battle extends javax.swing.JFrame {
         atk1 = new javax.swing.JRadioButton();
         atk2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
-        cry = new javax.swing.JRadioButton();
+        cry = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
         act = new javax.swing.JButton();
@@ -122,7 +122,6 @@ public class Battle extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("     ATTACK     ", jPanel2);
 
-        buttonGroup1.add(cry);
         cry.setText("Cry for Help");
         cry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,16 +134,16 @@ public class Battle extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(110, 110, 110)
                 .addComponent(cry)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(56, 56, 56)
                 .addComponent(cry)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("     ACTION     ", jPanel3);
@@ -194,6 +193,12 @@ public class Battle extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 385, 640, 208);
+
+        enemyPic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enemyPicMouseClicked(evt);
+            }
+        });
         getContentPane().add(enemyPic);
         enemyPic.setBounds(390, 90, 240, 180);
         getContentPane().add(playerPic);
@@ -221,10 +226,6 @@ public class Battle extends javax.swing.JFrame {
         Power pow = p.getPowerList().get(1);
         text.setText("Description: "+pow.getPowerInfo()+"\nDamage: "+ pow.getDamage() +"\nAccuracy: "+pow.getAccuracy());
     }//GEN-LAST:event_atk2ActionPerformed
-
-    private void cryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryActionPerformed
-        text.setText("Let the randomness decide.");
-    }//GEN-LAST:event_cryActionPerformed
     
     private void result(int i){
         String message;
@@ -241,8 +242,7 @@ public class Battle extends javax.swing.JFrame {
     private void enemyAttack(Player p){
         e.attack(e.getPowerList().get((int)(Math.random()*2)), p);
     }
-    
-    private void actActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actActionPerformed
+    private void foo(){
         if(cry.isSelected()){
             p.cryForHelp(e);
         }
@@ -260,7 +260,18 @@ public class Battle extends javax.swing.JFrame {
         playerHP.setValue(p.getHp());
         if(p.getHp() <= 0)
             result(0);
+    }
+    private void actActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actActionPerformed
+        foo();
     }//GEN-LAST:event_actActionPerformed
+
+    private void cryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryActionPerformed
+        text.setText("Let the randomness decide.");
+    }//GEN-LAST:event_cryActionPerformed
+
+    private void enemyPicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enemyPicMouseClicked
+        foo();
+    }//GEN-LAST:event_enemyPicMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -269,7 +280,7 @@ public class Battle extends javax.swing.JFrame {
     private javax.swing.JRadioButton atk2;
     private javax.swing.JLabel background;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton cry;
+    private javax.swing.JCheckBox cry;
     private javax.swing.JProgressBar enemyHP;
     private javax.swing.JLabel enemyPic;
     private javax.swing.JPanel jPanel1;
